@@ -11,14 +11,21 @@
 	// define a react component class (class is a component, a widget, a view. A react class is the definition of a component, the class itself cannot be rendered into HTML, it must be instatiated then rendered. Analogy: cookie cutter... the cookie cutter can create as many cookies, but cannot be eaten)
 	var Badge = React.createClass({
 		render: function () {
+			this.props // {}
+
 			return <button className="btn btn-primary" type="button">
-  			Messages <span className="badge">4</span>
+  			{this.props.title} <span className="badge">{this.props.number}</span>
 			</button>
 		}
 	});
 
+	var options = {
+		title: 'Sent',
+		number: 12
+	};
+
 	// Ask react to render this class, the instance (cookie dough cutout)
-	var element = React.createElement(Badge);
+	var element = React.createElement(Badge, options);
 
 	// When we ask react to render this class, we will tell it
 	// where to place the rendered element in the dom
