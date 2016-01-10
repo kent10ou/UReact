@@ -39,8 +39,7 @@
 				<h3>{this.props.header}</h3>
 					<p>{this.props.description}</p>
 					<p>
-						<a href="#" className="btn btn-primary" role="button">Button</a>
-						<a href="#" className="btn btn-default" role="button">Button</a>
+						<Badge title="See Tutorials" number="32" />
 					</p>
 			</div>
 		</div>
@@ -50,7 +49,10 @@
   // Initial setup options provided to the Badge componenet
   var options = {
   	title: 'Sent',
-  	number: 12
+  	number: 12,
+  	header: 'Learn React',
+  	description: 'React is fantastic new library for making fast, dynamic pages. React is fantastic new library for making fast, dynamic pages.',
+  	imageUrl: 'http://formatjs.io/img/react.svg'
   };
 
 	// Ask react to render this class, the instance (cookie dough cutout)
