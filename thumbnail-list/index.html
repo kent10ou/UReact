@@ -26,38 +26,61 @@
       // with class badge.
 
       return <button className="btn btn-primary" type="button">
-      {this.props.title} <span className="badge">{this.props.number}</span>
-    </button>
-  }
-});
+      	{this.props.title} <span className="badge">{this.props.number}</span>
+    	</button>
+ 		}
+	});
 
 	var Thumbnail = React.createClass({
 		render: function () {
 			return <div className="thumbnail">
-			<img src={this.props.imageUrl} />
-			<div className="caption">
-				<h3>{this.props.header}</h3>
+				<img src={this.props.imageUrl} />
+				<div className="caption">
+					<h3>{this.props.header}</h3>
 					<p>{this.props.description}</p>
 					<p>
 						<Badge title={this.props.title} number={this.props.number} />
 					</p>
+				</div>
 			</div>
-		</div>
-	}
-})
+		}
+	})
+
+	var ThumbnailList = React.createClass({
+		render: function () {
+			var list = this.props.thumbnailData.map(function(thumbnailProps) {
+				return <Thumbnail {...thumbnailProps} />
+			});
+
+			return <div>
+				{list}
+			</div>
+		}
+	});
 
   // Initial setup options provided to the Badge componenet
   var options = {
-  	title: 'See Tutorials',
-  	number: 32,
-  	header: 'Learn React',
-  	description: 'React is fantastic new library for making fast, dynamic pages. React is fantastic new library for making fast, dynamic pages.',
-  	imageUrl: 'http://formatjs.io/img/react.svg'
+  	
+  	thumbnailData: [{
+  		title: 'See Tutorials',
+  		number: 32,
+  		header: 'Learn React',
+  		description: 'React is fantastic new library for making fast, dynamic pages. React is fantastic new library for making fast, dynamic pages.',
+  		imageUrl: 'http://formatjs.io/img/react.svg'
+  	},{
+  		title: 'See Tutorials',
+  		number: 25,
+  		header: 'Learn Gulp',
+  		description: 'Gulp will speed up your development workflow. Gulp will speed up your development workflow.',
+  		imageUrl: 'http://brunch.io/images/others/gulp.png'
+  	}]
   };
+
+  // options = { thumbnailData: [{}, {}, {}]}
 
 	// Ask react to render this class, the instance (cookie dough cutout)
 	// React, please render this class
-	var element = React.createElement(Thumbnail, options);
+	var element = React.createElement(ThumbnailList, options);
 
 	// When we ask react to render this class, we will tell it
 	// where to place the rendered element in the dom
