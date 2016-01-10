@@ -1,0 +1,65 @@
+<head>
+	<script src="https://fb.me/react-0.14.6.js"></script>
+	<script src="https://fb.me/react-dom-0.14.6.js"></script>
+	<script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="target">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script type="text/jsx">
+	// define a react component class (class is a component, a widget, a view. A react class is the definition of a component, the class itself cannot be rendered into HTML, it must be instatiated then rendered. Analogy: cookie cutter... the cookie cutter can create as many cookies, but cannot be eaten)
+	var Badge = React.createClass({
+		// Define our render method.  The render method is the only required method in a React component.
+		render: function () {
+			// Return a snippet of JSX consisting of a button and a span.
+      // The button is assigned a class name and a type.  Inside of the button
+      // we place both a title and a number.  The number is wrapped inside of a span
+      // with class badge.
+
+      return <button className="btn btn-primary" type="button">
+      {this.props.title} <span className="badge">{this.props.number}</span>
+    </button>
+  }
+});
+
+	var Thumbnail = React.createClass({
+		render: function () {
+			return <div className="thumbnail">
+			<img src={this.props.imageUrl} />
+			<div className="caption">
+				<h3>{this.props.header}</h3>
+					<p>{this.props.description}</p>
+					<p>
+						<a href="#" className="btn btn-primary" role="button">Button</a>
+						<a href="#" className="btn btn-default" role="button">Button</a>
+					</p>
+			</div>
+		</div>
+	}
+})
+
+  // Initial setup options provided to the Badge componenet
+  var options = {
+  	title: 'Sent',
+  	number: 12
+  };
+
+	// Ask react to render this class, the instance (cookie dough cutout)
+	// React, please render this class
+	var element = React.createElement(Thumbnail, options);
+
+	// When we ask react to render this class, we will tell it
+	// where to place the rendered element in the dom
+	// React, after you render this class, please place it in my body tag
+	ReactDOM.render(element, document.querySelector(".target"));
+
+</script>
