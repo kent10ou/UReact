@@ -1,3 +1,4 @@
+var React = require('react');
 var Thumbnail = require('thumbnail');
 
 var ThumbnailList = React.createClass({

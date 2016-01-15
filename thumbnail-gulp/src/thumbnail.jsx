@@ -1,4 +1,5 @@
-
+var React = require('react');
+var Badge = require('./badge');
 
 var Thumbnail = React.createClass({
 	render: function () {
