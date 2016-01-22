@@ -17,14 +17,14 @@ gulp.task('default', function () { // tell gulp we have a task
 		fullPaths: true  // boiler plate
 	}))
 
-	function build (file) {
-		if (file) gutil.log('Recompiling' + file);
+	function build (file) { // build function tells bundler to do something
+		if (file) gutil.log('Recompiling' + file); 
 		return bundler
 			.bundle()
-			.on('error', gutil.log.bind(gutil, 'Browserify Error'))
+			.on('error', gutil.log.bind(gutil, 'Browserify Error')) // if there is ever an error during the build process, console.log it
 			.pipe(source('main.js'))
 			.pipe(gulp.dest('./'));
 	};
-	build();
-	bundler.on('update', build);
+	build(); // when you run gulp, it executes this build func
+	bundler.on('update', build); // on updates, run build 
 });
