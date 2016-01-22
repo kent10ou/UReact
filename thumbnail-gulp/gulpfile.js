@@ -5,16 +5,16 @@ var browserify = require('browserify'); // responsible for figuring out one part
 var watchify = require('watchify'); // automatically rerun gulp file when code changes
 var reactify = require('reactify'); // runs in conjunction with browserify to convert jsx to js
 
-gulp.task('default', function () {
-	// create bundler
-	var bundler = watchify(browserify({
-		entries: ['./src/app.jsx'],
-		transform: [reactify], 
-		extensions: ['.jsx'],
-		debug: true,
-		cache: {},
-		packageCache: {},
-		fullPaths: true
+gulp.task('default', function () { // tell gulp we have a task
+	// create bundler, responsible for running browserify on our code base
+	var bundler = watchify(browserify({ //browserify takes an object
+		entries: ['./src/app.jsx'], // pass in the starting point of our application, most parent component
+		transform: [reactify], // tells browserify, while it's figuring out our dependencies, it also needs to transform (compile) our jsx to js using reactify module
+		extensions: ['.jsx'], // specify the extensions
+		debug: true, // boiler plate
+		cache: {}, // boiler plate
+		packageCache: {}, // boiler plate
+		fullPaths: true  // boiler plate
 	}))
 
 	function build (file) {
