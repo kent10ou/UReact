@@ -1,5 +1,6 @@
 var React = require('react');
-var Thumbnail = require('thumbnail');
+var Button = require('./button');
+var ListItem = require('./list-item');
 
 var ThumbnailList = React.createClass({
 	render: function () {
